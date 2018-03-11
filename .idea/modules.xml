@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KHSOnline.iml" filepath="$PROJECT_DIR$/KHSOnline.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kopertais.iml" filepath="$PROJECT_DIR$/kopertais.iml" />
     </modules>
   </component>
 </project>

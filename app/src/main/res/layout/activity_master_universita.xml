@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            app:title="Master Mahasiswa"
+            app:title="UNIVERSITAS"
             app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
 
         <android.support.v4.widget.SwipeRefreshLayout
@@ -36,12 +36,4 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add"
-        android:tint="@color/md_white_1000" />
 </FrameLayout>
