@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uinbdg.skripsi.kopertais.Activities.MasterPerjalananActivity;
 import uinbdg.skripsi.kopertais.Activities.MasterUnivActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MasterUnivActivity.class));
                 break;
             case R.id.btn_perjalanan:
+                startActivity(new Intent(this, MasterPerjalananActivity.class));
                 break;
             case R.id.btn_exit:
                 break;

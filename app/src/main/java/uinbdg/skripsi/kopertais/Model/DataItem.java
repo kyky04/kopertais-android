@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+
 public class DataItem implements Parcelable {
 
 	@SerializedName("biaya_konsumsi")
@@ -152,24 +153,24 @@ public class DataItem implements Parcelable {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"DataItem{" + 
-			"biaya_konsumsi = '" + biayaKonsumsi + '\'' + 
-			",kota = '" + kota + '\'' + 
-			",jarak = '" + jarak + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",id_kota = '" + idKota + '\'' + 
-			",deleted_at = '" + deletedAt + '\'' + 
-			",alamat = '" + alamat + '\'' + 
-			",nama = '" + nama + '\'' + 
-			",biaya_inap = '" + biayaInap + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
-			",latidude = '" + latidude + '\'' + 
-			",id = '" + id + '\'' + 
-			",longitude = '" + longitude + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"DataItem{" +
+						"biaya_konsumsi = '" + biayaKonsumsi + '\'' +
+						",kota = '" + kota + '\'' +
+						",jarak = '" + jarak + '\'' +
+						",created_at = '" + createdAt + '\'' +
+						",id_kota = '" + idKota + '\'' +
+						",deleted_at = '" + deletedAt + '\'' +
+						",alamat = '" + alamat + '\'' +
+						",nama = '" + nama + '\'' +
+						",biaya_inap = '" + biayaInap + '\'' +
+						",updated_at = '" + updatedAt + '\'' +
+						",latidude = '" + latidude + '\'' +
+						",id = '" + id + '\'' +
+						",longitude = '" + longitude + '\'' +
+						"}";
+	}
 
 
 	@Override

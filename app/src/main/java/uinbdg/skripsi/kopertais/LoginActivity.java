@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                         new Runnable() {
                             public void run() {
                                 // On complete call either onLoginSuccess or onLoginFailed
-                                startActivity(new Intent(LoginActivity.this,MasterUnivActivity.class));
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
                                 finish();
                                 // onLoginFailed();
                                 CommonUtil.hideDialog();

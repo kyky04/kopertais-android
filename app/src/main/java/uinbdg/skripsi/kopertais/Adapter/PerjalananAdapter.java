@@ -15,16 +15,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import uinbdg.skripsi.kopertais.Model.DataItem;
 import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
-import uinbdg.skripsi.kopertais.Model.Universitas;
 import uinbdg.skripsi.kopertais.R;
 
 /**
  * Created by Comp on 2/11/2018.
  */
 
-public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class PerjalananAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DataItem> items = new ArrayList<>();
+
+    private List<DataItemPerjalanan> items = new ArrayList<>();
     private OnLoadMoreListener onLoadMoreListener;
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
@@ -37,24 +37,25 @@ public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.mOnItemClickListener = mItemClickListener;
     }
 
-    public UniversitaAdapter(Context context, List<DataItem> items) {
+    public PerjalananAdapter(Context context, List<DataItemPerjalanan> items) {
         this.items = items;
         ctx = context;
     }
 
-    public UniversitaAdapter(Context ctx) {
+    public PerjalananAdapter(Context ctx) {
         this.ctx = ctx;
     }
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.et_univ)
         EditText etUniv;
-        @BindView(R.id.et_kota)
-        EditText etKota;
-        @BindView(R.id.et_alamat)
-        EditText etAlamat;
+        @BindView(R.id.et_tujuan)
+        EditText etTujuan;
+        @BindView(R.id.et_waktu)
+        EditText etWaktu;
         @BindView(R.id.view_item)
         LinearLayout viewItem;
+
         public OriginalViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
@@ -64,7 +65,7 @@ public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder vh;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_universitas, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_perjalanan, parent, false);
         vh = new OriginalViewHolder(v);
         return vh;
     }
@@ -72,12 +73,12 @@ public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        DataItem univ = items.get(position);
+        DataItemPerjalanan univ = items.get(position);
         if (holder instanceof OriginalViewHolder) {
 
             ((OriginalViewHolder) holder).etUniv.setText(univ.getNama());
-            ((OriginalViewHolder) holder).etAlamat.setText(univ.getAlamat());
-            ((OriginalViewHolder) holder).etKota.setText(univ.getKota().getNama());
+            ((OriginalViewHolder) holder).etWaktu.setText(univ.getWaktu());
+            ((OriginalViewHolder) holder).etTujuan.setText(univ.getUniversitas().getNama());
 
 
             OriginalViewHolder view = (OriginalViewHolder) holder;

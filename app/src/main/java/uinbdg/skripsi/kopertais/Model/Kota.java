@@ -74,17 +74,17 @@ public class Kota implements Parcelable {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"Kota{" + 
-			"nama = '" + nama + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",id = '" + id + '\'' + 
-			",deleted_at = '" + deletedAt + '\'' + 
-			",id_provinsi = '" + idProvinsi + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"Kota{" +
+						"nama = '" + nama + '\'' +
+						",updated_at = '" + updatedAt + '\'' +
+						",created_at = '" + createdAt + '\'' +
+						",id = '" + id + '\'' +
+						",deleted_at = '" + deletedAt + '\'' +
+						",id_provinsi = '" + idProvinsi + '\'' +
+						"}";
+	}
 
 
 	@Override

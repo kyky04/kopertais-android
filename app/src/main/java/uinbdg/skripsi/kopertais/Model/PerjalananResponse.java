@@ -1,14 +1,12 @@
 package uinbdg.skripsi.kopertais.Model;
 
 import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
 
-
-public class UniversitasResponse{
+public class PerjalananResponse{
 
 	@SerializedName("data")
-	private List<DataItem> data;
+	private List<DataItemPerjalanan> data;
 
 	@SerializedName("success")
 	private boolean success;
@@ -16,11 +14,11 @@ public class UniversitasResponse{
 	@SerializedName("message")
 	private String message;
 
-	public void setData(List<DataItem> data){
+	public void setData(List<DataItemPerjalanan> data){
 		this.data = data;
 	}
 
-	public List<DataItem> getData(){
+	public List<DataItemPerjalanan> getData(){
 		return data;
 	}
 
@@ -43,7 +41,7 @@ public class UniversitasResponse{
 	@Override
  	public String toString(){
 		return 
-			"UniversitasResponse{" + 
+			"PerjalananResponse{" + 
 			"data = '" + data + '\'' + 
 			",success = '" + success + '\'' + 
 			",message = '" + message + '\'' + 

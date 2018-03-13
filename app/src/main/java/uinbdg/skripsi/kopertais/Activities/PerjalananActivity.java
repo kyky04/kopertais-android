@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,7 +22,15 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import uinbdg.skripsi.kopertais.Helper.ApiClient;
+import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
 import uinbdg.skripsi.kopertais.Model.DataItem;
+import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
+import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
 import uinbdg.skripsi.kopertais.R;
 
 public class PerjalananActivity extends AppCompatActivity {
@@ -122,7 +131,7 @@ public class PerjalananActivity extends AppCompatActivity {
         dialogBuilder.setTitle("PERJALANAN");
         dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                finish();
+                postPerjalanan();
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -132,5 +141,32 @@ public class PerjalananActivity extends AppCompatActivity {
         });
         AlertDialog b = dialogBuilder.create();
         b.show();
+    }
+
+
+    void postPerjalanan(){
+        DataItemPerjalanan perjalanan = new DataItemPerjalanan();
+        perjalanan.setIdUniversitas(univ.getId());
+        perjalanan.setWaktu(etPenginapan.getText().toString());
+        perjalanan.setStatusKeuangan(0);
+        perjalanan.setStatusBendahara(0);
+        perjalanan.setNama(etPegawaiDinas.getText().toString());
+
+        Retrofit retrofit = ApiClient.newInstance();
+        KopertaisApi api = retrofit.create(KopertaisApi.class);
+        api.postPerjalanan(perjalanan).enqueue(new Callback<PerjalananResponse>() {
+            @Override
+            public void onResponse(Call<PerjalananResponse> call, Response<PerjalananResponse> response) {
+                if(response.code() == 200){
+                    Toast.makeText(PerjalananActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PerjalananResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

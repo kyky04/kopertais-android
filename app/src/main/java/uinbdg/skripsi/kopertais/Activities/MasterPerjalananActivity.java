@@ -1,8 +1,6 @@
 package uinbdg.skripsi.kopertais.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,15 +18,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import uinbdg.skripsi.kopertais.Adapter.UniversitaAdapter;
+import uinbdg.skripsi.kopertais.Adapter.PerjalananAdapter;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
-import uinbdg.skripsi.kopertais.Model.DataItem;
-import uinbdg.skripsi.kopertais.Model.Universitas;
-import uinbdg.skripsi.kopertais.Model.UniversitasResponse;
+import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
+import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
 import uinbdg.skripsi.kopertais.R;
 
-public class MasterUnivActivity extends AppCompatActivity {
+public class MasterPerjalananActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -38,14 +35,14 @@ public class MasterUnivActivity extends AppCompatActivity {
     SwipeRefreshLayout refresh;
 
 
-    UniversitaAdapter adapter;
+    PerjalananAdapter adapter;
 
-    List<DataItem> list;
+    List<DataItemPerjalanan> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master_universita);
+        setContentView(R.layout.activity_master_perjalanan);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -53,7 +50,7 @@ public class MasterUnivActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        getAllUni();
+        getAllPerjalanan();
 
     }
 
@@ -67,34 +64,30 @@ public class MasterUnivActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void getAllUni() {
+    void getAllPerjalanan() {
         Retrofit retrofit = ApiClient.newInstance();
         KopertaisApi service = retrofit.create(KopertaisApi.class);
-        service.getAllUniv().enqueue(new Callback<UniversitasResponse>() {
+        service.getAllPerjalanan().enqueue(new Callback<PerjalananResponse>() {
             @Override
-            public void onResponse(Call<UniversitasResponse> call, Response<UniversitasResponse> response) {
+            public void onResponse(Call<PerjalananResponse> call, Response<PerjalananResponse> response) {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body().getData().get(i));
                     }
-                    adapter = new UniversitaAdapter(MasterUnivActivity.this, list);
+                    adapter = new PerjalananAdapter(MasterPerjalananActivity.this, list);
                     recyclerView.setAdapter(adapter);
 
-                    adapter.setOnItemClickListener(new UniversitaAdapter.OnItemClickListener() {
+                    adapter.setOnItemClickListener(new PerjalananAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, String obj, int position) {
-                            Intent i = new Intent(MasterUnivActivity.this, DetailUnivActivity.class);
-                            i.putExtra("univ", (Parcelable) list.get(position));
-                            i.putExtra("long",list.get(position).getLongitude());
-                            i.putExtra("lat",list.get(position).getLatidude());
-                            startActivity(i);
+
                         }
                     });
                 }
             }
 
             @Override
-            public void onFailure(Call<UniversitasResponse> call, Throwable t) {
+            public void onFailure(Call<PerjalananResponse> call, Throwable t) {
 
             }
         });
