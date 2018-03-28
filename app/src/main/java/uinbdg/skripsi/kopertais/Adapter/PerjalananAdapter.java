@@ -30,7 +30,7 @@ public class PerjalananAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, String obj, int position);
+        void onItemClick(int position);
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
@@ -86,7 +86,7 @@ public class PerjalananAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 @Override
                 public void onClick(View view) {
                     if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view, items.get(position).getNama(), position);
+                        mOnItemClickListener.onItemClick(position);
                     }
                 }
             });

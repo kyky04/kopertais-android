@@ -76,7 +76,7 @@ public class PerjalananActivity extends AppCompatActivity {
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        etUniv.setOnClickListener(new View.OnClickListener() {
+        etPenginapan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePickerDialog.show();
@@ -116,8 +116,8 @@ public class PerjalananActivity extends AppCompatActivity {
 
 
         edtHari.setText(etLama.getText().toString() +" Hari");
-        edtInap.setText(String.valueOf("Rp. " + univ.getBiayaInap()));
-        edtKonsumsi.setText(String.valueOf("Rp. " + univ.getBiayaKonsumsi()));
+        edtInap.setText(String.valueOf("Rp. " + formatDecimal(univ.getBiayaInap())));
+        edtKonsumsi.setText(String.valueOf("Rp. " + formatDecimal(univ.getBiayaKonsumsi())));
 
         int hargaBensin = univ.getJarak() / 8 * 7600;
         edtBensin.setText("Rp. " + String.valueOf(hargaBensin));
@@ -169,4 +169,14 @@ public class PerjalananActivity extends AppCompatActivity {
             }
         });
     }
+
+    public String formatDecimal(float number) {
+        float epsilon = 0.004f; // 4 tenths of a cent
+        if (Math.abs(Math.round(number) - number) < epsilon) {
+            return String.format("%10.0f", number); // sdb
+        } else {
+            return String.format("%10.2f", number); // dj_segfault
+        }
+    }
+
 }

@@ -1,13 +1,16 @@
 package uinbdg.skripsi.kopertais.Activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ import retrofit2.Retrofit;
 import uinbdg.skripsi.kopertais.Adapter.PerjalananAdapter;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
+import uinbdg.skripsi.kopertais.Helper.Session;
 import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
 import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
 import uinbdg.skripsi.kopertais.R;
@@ -33,6 +37,7 @@ public class MasterPerjalananActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refresh;
+    Session session;
 
 
     PerjalananAdapter adapter;
@@ -44,6 +49,7 @@ public class MasterPerjalananActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_perjalanan);
         ButterKnife.bind(this);
+        session = new Session(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -79,8 +85,10 @@ public class MasterPerjalananActivity extends AppCompatActivity {
 
                     adapter.setOnItemClickListener(new PerjalananAdapter.OnItemClickListener() {
                         @Override
-                        public void onItemClick(View view, String obj, int position) {
-
+                        public void onItemClick(int position) {
+                            if(session.getEmail().equals("keuangan@gmail.com") || session.getEmail().equals("pimpinan@gmail.com")){
+                            setujui(list.get(position));
+                            }
                         }
                     });
                 }
@@ -91,5 +99,24 @@ public class MasterPerjalananActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    void setujui(DataItemPerjalanan itemPerjalanans){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Setujui Perjalanan ? "+ itemPerjalanans.getNama() + " ke "+itemPerjalanans.getUniversitas().getNama() +" Pada Tanggal " + itemPerjalanans.getWaktu());
+        builder.setPositiveButton("Setuju", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MasterPerjalananActivity.this, "Perjalanan di setujui", Toast.LENGTH_SHORT).show();
+            }
+        }).setNegativeButton("Tidak Setuju", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MasterPerjalananActivity.this, "Perjalanan Tidak di setujui", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

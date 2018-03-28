@@ -18,6 +18,6 @@ public interface KopertaisApi {
     @GET("perjalanans")
     Call<PerjalananResponse> getAllPerjalanan();
 
-    @POST("perjalanas")
+    @POST("perjalanans")
     Call<PerjalananResponse> postPerjalanan(@Body DataItemPerjalanan itemPerjalanan);
 }

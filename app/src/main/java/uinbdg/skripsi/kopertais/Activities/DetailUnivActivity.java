@@ -52,12 +52,14 @@ public class DetailUnivActivity extends Activity {
         Bundle data = getIntent().getExtras();
         univ = (DataItem) data.getParcelable("univ");
 
+
+
         etUniv.setText(univ.getNama());
         etAlamat.setText(univ.getAlamat());
         etKota.setText(univ.getKota().getNama());
-        etPenginapan.setText("Rp. " + univ.getBiayaInap());
-        etJarak.setText(univ.getBiayaInap() + " KM");
-        etKonsumsi.setText("Rp. " + univ.getBiayaKonsumsi());
+        etPenginapan.setText("Rp. " + formatDecimal(univ.getBiayaInap()));
+        etJarak.setText(univ.getJarak() + " KM");
+        etKonsumsi.setText("Rp. " + formatDecimal(univ.getBiayaKonsumsi()));
 
 
 
@@ -78,6 +80,15 @@ public class DetailUnivActivity extends Activity {
 
                 startActivity(intent);
                 break;
+        }
+    }
+
+    public String formatDecimal(float number) {
+        float epsilon = 0.004f; // 4 tenths of a cent
+        if (Math.abs(Math.round(number) - number) < epsilon) {
+            return String.format("%10.0f", number); // sdb
+        } else {
+            return String.format("%10.2f", number); // dj_segfault
         }
     }
 }

@@ -75,8 +75,6 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleContentDescription="show"
-                app:passwordToggleDrawable="@drawable/asl_password_visibility"
                 app:passwordToggleEnabled="true">
 
                 <EditText

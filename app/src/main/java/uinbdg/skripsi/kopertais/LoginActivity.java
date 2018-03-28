@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import uinbdg.skripsi.kopertais.Activities.MasterUnivActivity;
+import uinbdg.skripsi.kopertais.Helper.Session;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -21,28 +23,48 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     @BindView(R.id.btn_login)
     Button btnLogin;
-
+    Session session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        session = new Session(this);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CommonUtil.showProgress(LoginActivity.this,"Authenticating . . .");
 
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                // On complete call either onLoginSuccess or onLoginFailed
-                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                                finish();
-                                // onLoginFailed();
-                                CommonUtil.hideDialog();
-                            }
-                        }, 3000);
+                if(etUsername.getText().toString().equals("pegawai@gmail.com") && etPassword.getText().toString().equals("password")){
+                    session.setEmail("pegawai@gmail.com");
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // Add new Flag to start new Aktifitas
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }else if(etUsername.getText().toString().equals("keuangan@gmail.com") && etPassword.getText().toString().equals("password")){
+                    session.setEmail("keuangan@gmail.com");
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // Add new Flag to start new Aktifitas
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }else if(etUsername.getText().toString().equals("pimpinan@gmail.com") && etPassword.getText().toString().equals("password")){
+                    session.setEmail("pimpinan@gmail.com");
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // Add new Flag to start new Aktifitas
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(LoginActivity.this, "Username atau password yang anda masukan tidak sesuai", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -53,4 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+
 }
