@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout btnUniv;
     @BindView(R.id.btn_perjalanan)
     RelativeLayout btnPerjalanan;
-    @BindView(R.id.btn_exit)
-    RelativeLayout btnExit;
 
     Session session;
     @BindView(R.id.toolbar)
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.btn_univ, R.id.btn_perjalanan, R.id.btn_exit})
+    @OnClick({R.id.btn_univ, R.id.btn_perjalanan})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_univ:
@@ -64,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_perjalanan:
                 startActivity(new Intent(this, MasterPerjalananActivity.class));
-                break;
-            case R.id.btn_exit:
                 break;
         }
     }

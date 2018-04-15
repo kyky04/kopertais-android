@@ -16,7 +16,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +27,14 @@
         <activity android:name=".Activities.PerjalananActivity" />
         <activity android:name=".Activities.MapsActivity" />
         <activity android:name=".Activities.MasterUnivActivity" />
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Activities.MasterPerjalananActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MasterPerjalananActivity" />
+        <activity android:name=".Activities.MasterRekomendasiActivity" />
+        <activity android:name=".Activities.MasterPerjalananDinasActivity" />
+        <activity android:name=".Activities.MenuActivity" />
+        <activity android:name=".Activities.TambahRekomendasiActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Activities.InputPerjalananDinasActvity"></activity>
     </application>
 
 </manifest>

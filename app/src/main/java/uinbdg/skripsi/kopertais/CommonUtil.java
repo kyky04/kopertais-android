@@ -3,6 +3,7 @@ package uinbdg.skripsi.kopertais;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,9 +41,11 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -252,5 +256,37 @@ public class CommonUtil {
             ((AppCompatActivity)context).getSupportActionBar().setDisplayHomeAsUpEnabled(showHome);
         }
         ((AppCompatActivity)context).getSupportActionBar().setTitle(titleToolbar);
+    }
+
+    public static void dialogTanggal(Context context, final EditText etDate) {
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        TimeZone tz = TimeZone.getTimeZone("Asia/Jakarta");
+        dateFormat.setTimeZone(tz);
+        Calendar newCalendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                etDate.setText(dateFormat.format(newDate.getTime()));
+            }
+
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+
+    public static void dialogSucces(final Activity context, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(message);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                context.finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
+        dialog.show();
     }
 }

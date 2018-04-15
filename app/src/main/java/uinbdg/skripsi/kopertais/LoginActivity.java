@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import uinbdg.skripsi.kopertais.Activities.MasterUnivActivity;
+import uinbdg.skripsi.kopertais.Activities.MenuActivity;
 import uinbdg.skripsi.kopertais.Helper.Session;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -35,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(etUsername.getText().toString().equals("pegawai@gmail.com") && etPassword.getText().toString().equals("password")){
+                if(etUsername.getText().toString().equals("rektorat@gmail.com") && etPassword.getText().toString().equals("password")){
                     session.setEmail("pegawai@gmail.com");
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // Add new Flag to start new Aktifitas
@@ -46,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }else if(etUsername.getText().toString().equals("keuangan@gmail.com") && etPassword.getText().toString().equals("password")){
                     session.setEmail("keuangan@gmail.com");
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // Add new Flag to start new Aktifitas
@@ -55,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }else if(etUsername.getText().toString().equals("pimpinan@gmail.com") && etPassword.getText().toString().equals("password")){
                     session.setEmail("pimpinan@gmail.com");
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // Add new Flag to start new Aktifitas

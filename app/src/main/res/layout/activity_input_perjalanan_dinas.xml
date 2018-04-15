@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="INPUT PERJALANAN DINAS"
+        app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="NAMA PEGAWAI" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/tv_nama_pegawai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="JABATAN " />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_jabatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="TANGGAL BERANGKAT" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_tanggal_berangkat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="TANGGAL KEMBALI" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_tgl_kembali"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="LAMA PERJALANAN" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_lama_perjalanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:inputType="number"
+                android:padding="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="TEMPAT BERANGKAT" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_tampat_berangkat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:enabled="false"
+                android:padding="@dimen/spacing_large"
+                android:text="UIN BANDUNG" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="TUJUAN" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_tujuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="MAKSUD PERJALANAN" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_maksud_perjalanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="KENDARAAN" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_kendaraan_dinas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:enabled="false"
+                android:padding="@dimen/spacing_large"
+                android:text="KENDARAAN DINAS" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small"
+                android:text="STATUS" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/txt_area"
+                android:padding="@dimen/spacing_large"
+                android:text="BERANGKAT" />
+
+
+            <Button
+                android:id="@+id/ajukan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large"
+                android:background="@drawable/txt_area"
+                android:text="SETUJUI" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

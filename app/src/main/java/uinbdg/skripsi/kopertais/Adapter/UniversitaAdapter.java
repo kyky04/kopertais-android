@@ -13,9 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uinbdg.skripsi.kopertais.Model.DataItem;
-import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
-import uinbdg.skripsi.kopertais.Model.Universitas;
+import uinbdg.skripsi.kopertais.Model.DataItemUniversitas;
 import uinbdg.skripsi.kopertais.R;
 
 /**
@@ -24,7 +22,7 @@ import uinbdg.skripsi.kopertais.R;
 
 public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DataItem> items = new ArrayList<>();
+    private List<DataItemUniversitas> items = new ArrayList<>();
     private OnLoadMoreListener onLoadMoreListener;
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
@@ -37,7 +35,7 @@ public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.mOnItemClickListener = mItemClickListener;
     }
 
-    public UniversitaAdapter(Context context, List<DataItem> items) {
+    public UniversitaAdapter(Context context, List<DataItemUniversitas> items) {
         this.items = items;
         ctx = context;
     }
@@ -72,7 +70,7 @@ public class UniversitaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        DataItem univ = items.get(position);
+        DataItemUniversitas univ = items.get(position);
         if (holder instanceof OriginalViewHolder) {
 
             ((OriginalViewHolder) holder).etUniv.setText(univ.getNama());

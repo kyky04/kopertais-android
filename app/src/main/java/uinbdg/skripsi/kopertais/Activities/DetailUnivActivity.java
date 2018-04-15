@@ -13,12 +13,11 @@ import android.widget.ImageButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import uinbdg.skripsi.kopertais.Model.DataItem;
-import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
+import uinbdg.skripsi.kopertais.Model.DataItemUniversitas;
 import uinbdg.skripsi.kopertais.R;
 
 public class DetailUnivActivity extends Activity {
-    DataItem univ;
+    DataItemUniversitas univ;
     @BindView(R.id.et_univ)
     EditText etUniv;
     @BindView(R.id.et_kota)
@@ -50,7 +49,7 @@ public class DetailUnivActivity extends Activity {
         myLat = getIntent().getDoubleExtra("lat", 0);
 
         Bundle data = getIntent().getExtras();
-        univ = (DataItem) data.getParcelable("univ");
+        univ = (DataItemUniversitas) data.getParcelable("univ");
 
 
 

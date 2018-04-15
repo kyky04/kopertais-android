@@ -23,7 +23,7 @@
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $namaMahasiswa = $row['nama'];
-    $nimMahasiswa = $row['nim'];
+    $nimMahasiswa = $row['tanggal_lahir'];
 
     //Cek Data Nilai
     $column_matkul = "";

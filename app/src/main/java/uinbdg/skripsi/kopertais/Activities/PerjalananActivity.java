@@ -28,7 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
-import uinbdg.skripsi.kopertais.Model.DataItem;
+import uinbdg.skripsi.kopertais.Model.DataItemUniversitas;
 import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
 import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
 import uinbdg.skripsi.kopertais.R;
@@ -48,7 +48,7 @@ public class PerjalananActivity extends AppCompatActivity {
     AppCompatEditText etLama;
     @BindView(R.id.ajukan)
     Button ajukan;
-    private DataItem univ;
+    private DataItemUniversitas univ;
 
     DatePickerDialog datePickerDialog;
 
@@ -61,7 +61,7 @@ public class PerjalananActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle data = getIntent().getExtras();
-        univ = (DataItem) data.getParcelable("univ");
+        univ = (DataItemUniversitas) data.getParcelable("univ");
 
         etUniv.setText(univ.getNama());
 

@@ -38,7 +38,7 @@
                     $response["admin"] = 1;
                 }else {
                     //Cek di Mahasiswa
-                    $sql = "SELECT * FROM tb_mahasiswa WHERE nim = '$username' and password = '$password'";
+                    $sql = "SELECT * FROM tb_mahasiswa WHERE tanggal_lahir = '$username' and password = '$password'";
                     $result = mysqli_query($db,$sql);
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                     $count = mysqli_num_rows($result);
@@ -47,7 +47,7 @@
                         $response["message"] = "Login berhasil";
                         $response["name"] = $row['nama'];
                         $response["id"] = $row['recid'];
-                        $response["userid"] = $row['nim'];
+                        $response["userid"] = $row['tanggal_lahir'];
                         $response["admin"] = 2;
                     }else {
                         $response["success"] = 0;
@@ -244,7 +244,7 @@
             print(json_encode($result));
         }elseif($function=="AddMahasiswa"){
             $nama= $_POST['nama'];
-            $nim= $_POST['nim'];
+            $tanggal_lahir= $_POST['tanggal_lahir'];
             $password = md5($_POST['password']);
             $no_hp= $_POST['no_hp'];
             $alamat = $_POST['alamat'];
@@ -252,7 +252,7 @@
             $id= $_POST['id'];
             if($id==''){
                 //Insert Mahasiswa
-                $sql = "INSERT INTO tb_mahasiswa (nama,nim,password,no_hp,alamat,jurusan) VALUES ('$nama','$nim','$password','$no_hp','$alamat','$jurusan') ";
+                $sql = "INSERT INTO tb_mahasiswa (nama,tanggal_lahir,password,no_hp,alamat,jurusan) VALUES ('$nama','$tanggal_lahir','$password','$no_hp','$alamat','$jurusan') ";
                 $result = mysqli_query($db,$sql);
                 if($result){
                     $response["message"] = 'Tambah mahasiswa sukses';
@@ -263,7 +263,7 @@
                 }
             }else{
                 //Update Mahasiswa
-                $sql = "UPDATE tb_mahasiswa SET nama= '$nama', nim= '$nim',password = '$password', no_hp= '$no_hp', alamat = '$alamat', jurusan = '$jurusan' WHERE recid = '$id ' ";
+                $sql = "UPDATE tb_mahasiswa SET nama= '$nama', tanggal_lahir= '$tanggal_lahir',password = '$password', no_hp= '$no_hp', alamat = '$alamat', jurusan = '$jurusan' WHERE recid = '$id ' ";
                 $result = mysqli_query($db,$sql);
                 if($result){
                         $response["message"] = 'Update mahasiswa sukses';
@@ -282,7 +282,7 @@
                 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                     $listIsi = array();
                     $listIsi['nama'] = $row['nama'];
-                    $listIsi['nim'] = $row['nim'];
+                    $listIsi['tanggal_lahir'] = $row['tanggal_lahir'];
                     $listIsi['hp'] = $row['no_hp'];
                     $listIsi['alamat'] = $row['alamat'];
                     $listIsi['jurusan'] = $row['jurusan'];
@@ -442,12 +442,12 @@
         }elseif($function=="ListMahasiswaPerKelas"){
             $idKelas= $_POST['idKelas'];
             $idMatkul= $_POST['idMatkul'];
-            $sql = "SELECT a.recid,b.nama,b.nim,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_kelas = $idKelas AND a.id_matkul = '$idMatkul' ";
+            $sql = "SELECT a.recid,b.nama,b.tanggal_lahir,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_kelas = $idKelas AND a.id_matkul = '$idMatkul' ";
             if ($result=mysqli_query($db,$sql)){
                 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                     $listIsi = array();
                     $listIsi['nama'] = $row['nama'];
-                    $listIsi['nim'] = $row['nim'];
+                    $listIsi['tanggal_lahir'] = $row['tanggal_lahir'];
                     $listIsi['jurusan'] = $row['jurusan'];
                     $listIsi['recid'] = $row['recid'];
                     $response[] = $listIsi;
@@ -484,15 +484,15 @@
             }
             $notin = rtrim($notin, ",");
             if($notin==""){
-                $sql = "SELECT recid, nama, nim, jurusan FROM tb_mahasiswa ORDER BY nama";
+                $sql = "SELECT recid, nama, tanggal_lahir, jurusan FROM tb_mahasiswa ORDER BY nama";
             }else{
-                $sql = "SELECT recid, nama, nim, jurusan FROM tb_mahasiswa WHERE recid NOT IN ($notin) ORDER BY nama";
+                $sql = "SELECT recid, nama, tanggal_lahir, jurusan FROM tb_mahasiswa WHERE recid NOT IN ($notin) ORDER BY nama";
             }
             if ($result=mysqli_query($db,$sql)){
                 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                     $listIsi = array();
                     $listIsi['nama'] = $row['nama'];
-                    $listIsi['nim'] = $row['nim'];
+                    $listIsi['tanggal_lahir'] = $row['tanggal_lahir'];
                     $listIsi['jurusan'] = $row['jurusan'];
                     $listIsi['recid'] = $row['recid'];
                     $response[] = $listIsi;
@@ -540,12 +540,12 @@
         }elseif($function=="ListNilaiMahasiswaPerKelas"){
             $idKelas= $_POST['idKelas'];
             $idMatkul= $_POST['idMatkul'];
-            $sql = "SELECT a.recid,a.nilai_absen, a.nilai_tugas, a.nilai_uts, a.nilai_uas, a.range_nilai, b.nama,b.nim,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_kelas = $idKelas and a.id_matkul = '$idMatkul'";
+            $sql = "SELECT a.recid,a.nilai_absen, a.nilai_tugas, a.nilai_uts, a.nilai_uas, a.range_nilai, b.nama,b.tanggal_lahir,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_kelas = $idKelas and a.id_matkul = '$idMatkul'";
             if ($result=mysqli_query($db,$sql)){
                 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                     $listIsi = array();
                     $listIsi['nama'] = $row['nama'];
-                    $listIsi['nim'] = $row['nim'];
+                    $listIsi['tanggal_lahir'] = $row['tanggal_lahir'];
                     $listIsi['jurusan'] = $row['jurusan'];
                     $listIsi['nilai_absen'] = $row['nilai_absen'];
                     $listIsi['nilai_tugas'] = $row['nilai_tugas'];
@@ -620,7 +620,7 @@
         }elseif($function=="ListNilaiPerMahasiswa"){
             $idMahasiswa = $_POST['idMahasiswa'];
             $idKelas = $_POST['idKelas'];
-            // $sql = "SELECT a.recid,a.nilai_absen, a.nilai_tugas, a.nilai_uts, a.nilai_uas, a.id_matkul, a.range_nilai, b.nama,b.nim,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_mahasiswa = '$idMahasiswa' AND a.id_kelas = '$idKelas'";
+            // $sql = "SELECT a.recid,a.nilai_absen, a.nilai_tugas, a.nilai_uts, a.nilai_uas, a.id_matkul, a.range_nilai, b.nama,b.tanggal_lahir,b.jurusan FROM tb_kelas_mahasiswa a, tb_mahasiswa b WHERE b.recid = a.id_mahasiswa and a.id_mahasiswa = '$idMahasiswa' AND a.id_kelas = '$idKelas'";
             // echo $sql;
             $sql = "SELECT
                     a.recid,
@@ -630,7 +630,7 @@
                     a.nilai_uas,
                     a.id_matkul,
                     a.range_nilai,
-                    b.nim,
+                    b.tanggal_lahir,
                     b.jurusan,
                     c.nama
                 FROM
@@ -646,7 +646,7 @@
                 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                     $listIsi = array();
                     $listIsi['nama'] = $row['nama'];
-                    $listIsi['nim'] = $row['nim'];
+                    $listIsi['tanggal_lahir'] = $row['tanggal_lahir'];
                     $listIsi['jurusan'] = $row['jurusan'];
                     $listIsi['id_matkul'] = $row['id_matkul'];
                     $listIsi['nilai_absen'] = $row['nilai_absen'];

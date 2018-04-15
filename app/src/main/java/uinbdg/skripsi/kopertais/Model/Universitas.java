@@ -1,6 +1,5 @@
 package uinbdg.skripsi.kopertais.Model;
 
-
 import com.google.gson.annotations.SerializedName;
 
 public class Universitas{

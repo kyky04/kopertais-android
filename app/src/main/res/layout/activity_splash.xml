@@ -6,19 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:layout_width="78dp"
-        android:layout_height="78dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_logo"/>
-
     <TextView
         fontPath="fonts/montserrat_bold.ttf"
         android:padding="4dp"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="KOPERTAIS "
+        android:text="PERJALANAN DINAS KOPERTAIS"
         android:layout_marginBottom="4dp"/>
 </RelativeLayout>

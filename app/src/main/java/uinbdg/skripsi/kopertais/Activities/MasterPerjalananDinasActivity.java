@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +19,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import uinbdg.skripsi.kopertais.Adapter.UniversitaAdapter;
+import uinbdg.skripsi.kopertais.Adapter.PerjalananDinasAdapter;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
-import uinbdg.skripsi.kopertais.Model.DataItemUniversitas;
-import uinbdg.skripsi.kopertais.Model.UniversitasResponse;
+import uinbdg.skripsi.kopertais.Model.DataItemPerjalananDinas;
+import uinbdg.skripsi.kopertais.Model.PerjalananDinasResponse;
 import uinbdg.skripsi.kopertais.R;
 
-public class MasterUnivActivity extends AppCompatActivity {
+public class MasterPerjalananDinasActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -37,14 +36,15 @@ public class MasterUnivActivity extends AppCompatActivity {
     SwipeRefreshLayout refresh;
 
 
-    UniversitaAdapter adapter;
+    PerjalananDinasAdapter adapter;
 
-    List<DataItemUniversitas> list;
+    List<DataItemPerjalananDinas> list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master_universita);
+        setContentView(R.layout.activity_perjalanan_dinas);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -52,8 +52,14 @@ public class MasterUnivActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        getAllUni();
+        getAllPerjalananDinas();
 
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getAllPerjalananDinas();
+            }
+        });
     }
 
     @Override
@@ -66,36 +72,36 @@ public class MasterUnivActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void getAllUni() {
+    void getAllPerjalananDinas() {
+        refresh.setRefreshing(true);
         Retrofit retrofit = ApiClient.newInstance();
         KopertaisApi service = retrofit.create(KopertaisApi.class);
-        service.getAllUniv().enqueue(new Callback<UniversitasResponse>() {
+        service.getAllPerjalananDinas().enqueue(new Callback<PerjalananDinasResponse>() {
             @Override
-            public void onResponse(Call<UniversitasResponse> call, Response<UniversitasResponse> response) {
+            public void onResponse(Call<PerjalananDinasResponse> call, Response<PerjalananDinasResponse> response) {
+                refresh.setRefreshing(false);
                 if (response.isSuccessful()) {
+                    list.clear();
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body().getData().get(i));
                     }
-                    adapter = new UniversitaAdapter(MasterUnivActivity.this, list);
+                    adapter = new PerjalananDinasAdapter(MasterPerjalananDinasActivity.this, list);
                     recyclerView.setAdapter(adapter);
 
-                    adapter.setOnItemClickListener(new UniversitaAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, String obj, int position) {
-                            Intent i = new Intent(MasterUnivActivity.this, DetailUnivActivity.class);
-                            i.putExtra("univ", (Parcelable) list.get(position));
-                            i.putExtra("long",list.get(position).getLongitude());
-                            i.putExtra("lat",list.get(position).getLatidude());
-                            startActivity(i);
-                        }
-                    });
+
                 }
             }
 
             @Override
-            public void onFailure(Call<UniversitasResponse> call, Throwable t) {
-
+            public void onFailure(Call<PerjalananDinasResponse> call, Throwable t) {
+                refresh.setRefreshing(false);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAllPerjalananDinas();
     }
 }
