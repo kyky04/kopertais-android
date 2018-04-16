@@ -1,4 +1,4 @@
-package uinbdg.skripsi.kopertais.Activities;
+package uinbdg.skripsi.kopertais.Activities.baru;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 import uinbdg.skripsi.kopertais.CommonUtil;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
-import uinbdg.skripsi.kopertais.Model.DataItemPerjalananDinas;
+import uinbdg.skripsi.kopertais.Model.baru.DataItemPerjalananDinas;
 import uinbdg.skripsi.kopertais.Model.PerjalananDinasResponse;
 import uinbdg.skripsi.kopertais.R;
 

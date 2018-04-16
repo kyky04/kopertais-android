@@ -10,6 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,7 +43,6 @@ public class DetailUnivActivity extends Activity {
     private double myLong,myLat;
 
     DatePickerDialog datePicker;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,4 +95,6 @@ public class DetailUnivActivity extends Activity {
             return String.format("%10.2f", number); // dj_segfault
         }
     }
+
+
 }

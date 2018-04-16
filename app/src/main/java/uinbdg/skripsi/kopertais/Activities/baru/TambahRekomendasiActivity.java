@@ -1,4 +1,4 @@
-package uinbdg.skripsi.kopertais.Activities;
+package uinbdg.skripsi.kopertais.Activities.baru;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +22,11 @@ import retrofit2.Retrofit;
 import uinbdg.skripsi.kopertais.CommonUtil;
 import uinbdg.skripsi.kopertais.Helper.ApiClient;
 import uinbdg.skripsi.kopertais.Helper.KopertaisApi;
-import uinbdg.skripsi.kopertais.Model.DataItemPegawai;
+import uinbdg.skripsi.kopertais.Model.baru.DataItemPegawai;
 import uinbdg.skripsi.kopertais.Model.DataItemUniversitas;
-import uinbdg.skripsi.kopertais.Model.PegawaiResponse;
-import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
+import uinbdg.skripsi.kopertais.Model.baru.PegawaiResponse;
 import uinbdg.skripsi.kopertais.Model.RekomendasiRequest;
-import uinbdg.skripsi.kopertais.Model.RekomendasiResponse;
+import uinbdg.skripsi.kopertais.Model.baru.RekomendasiResponse;
 import uinbdg.skripsi.kopertais.Model.UniversitasResponse;
 import uinbdg.skripsi.kopertais.R;
 

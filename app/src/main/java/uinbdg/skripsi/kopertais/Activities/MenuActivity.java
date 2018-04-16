@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uinbdg.skripsi.kopertais.Activities.baru.MasterPerjalananDinasActivity;
+import uinbdg.skripsi.kopertais.Activities.baru.MasterRekomendasiActivity;
 import uinbdg.skripsi.kopertais.MainActivity;
 import uinbdg.skripsi.kopertais.R;
 

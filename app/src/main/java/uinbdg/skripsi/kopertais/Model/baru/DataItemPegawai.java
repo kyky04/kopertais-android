@@ -1,4 +1,4 @@
-package uinbdg.skripsi.kopertais.Model;
+package uinbdg.skripsi.kopertais.Model.baru;
 
 import com.google.gson.annotations.SerializedName;
 

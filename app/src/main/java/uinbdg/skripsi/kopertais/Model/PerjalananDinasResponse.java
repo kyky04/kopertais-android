@@ -3,6 +3,8 @@ package uinbdg.skripsi.kopertais.Model;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
+import uinbdg.skripsi.kopertais.Model.baru.DataItemPerjalananDinas;
+
 public class PerjalananDinasResponse{
 
 	@SerializedName("data")

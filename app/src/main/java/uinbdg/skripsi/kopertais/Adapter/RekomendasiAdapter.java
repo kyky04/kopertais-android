@@ -13,7 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uinbdg.skripsi.kopertais.Model.DataItemRekomendasi;
+import uinbdg.skripsi.kopertais.Model.baru.DataItemRekomendasi;
 import uinbdg.skripsi.kopertais.R;
 
 /**

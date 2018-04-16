@@ -6,13 +6,12 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import uinbdg.skripsi.kopertais.Model.DataItemPerjalanan;
-import uinbdg.skripsi.kopertais.Model.DataItemPerjalananDinas;
-import uinbdg.skripsi.kopertais.Model.Pegawai;
-import uinbdg.skripsi.kopertais.Model.PegawaiResponse;
+import uinbdg.skripsi.kopertais.Model.baru.DataItemPerjalananDinas;
+import uinbdg.skripsi.kopertais.Model.baru.PegawaiResponse;
 import uinbdg.skripsi.kopertais.Model.PerjalananDinasResponse;
 import uinbdg.skripsi.kopertais.Model.PerjalananResponse;
 import uinbdg.skripsi.kopertais.Model.RekomendasiRequest;
-import uinbdg.skripsi.kopertais.Model.RekomendasiResponse;
+import uinbdg.skripsi.kopertais.Model.baru.RekomendasiResponse;
 import uinbdg.skripsi.kopertais.Model.UniversitasResponse;
 
 public interface KopertaisApi {
